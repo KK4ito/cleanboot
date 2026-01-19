@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import ch.zhaw.ssdd.cleanboot.application.exception.ComponentNotAvailableException;
 import ch.zhaw.ssdd.cleanboot.application.port.in.EDAAccessPartDetailsUseCase;
-import ch.zhaw.ssdd.cleanboot.application.port.in.EDAListCategoriesUseCase;
+import ch.zhaw.ssdd.cleanboot.application.port.in.EDAListCategoriesUsecase;
 import ch.zhaw.ssdd.cleanboot.application.port.in.EDAListCategoryEntriesUsecase;
 import ch.zhaw.ssdd.cleanboot.application.port.out.LoggingAdapter;
 import ch.zhaw.ssdd.cleanboot.application.port.out.StoragePersistanceAdapter;
@@ -15,7 +15,7 @@ import ch.zhaw.ssdd.cleanboot.domain.model.Component;
 import ch.zhaw.ssdd.cleanboot.domain.model.InternalPartNumber;
 
 @Service
-public class EDAIntegrationService implements EDAListCategoriesUseCase, EDAListCategoryEntriesUsecase, EDAAccessPartDetailsUseCase{
+public class EDAIntegrationService implements EDAListCategoriesUsecase, EDAListCategoryEntriesUsecase, EDAAccessPartDetailsUseCase{
 
     private final StoragePersistanceAdapter storagePersistenceAdapter;
     private final LoggingAdapter logger;

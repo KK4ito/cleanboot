@@ -14,7 +14,7 @@ import ch.zhaw.ssdd.cleanboot.adapter.in.eda.kicad.dto.KicadComponent;
 import ch.zhaw.ssdd.cleanboot.adapter.in.eda.kicad.dto.KicadComponentDetail;
 import ch.zhaw.ssdd.cleanboot.adapter.in.eda.kicad.dto.KicadEndpoint;
 import ch.zhaw.ssdd.cleanboot.application.port.in.EDAAccessPartDetailsUseCase;
-import ch.zhaw.ssdd.cleanboot.application.port.in.EDAListCategoriesUseCase;
+import ch.zhaw.ssdd.cleanboot.application.port.in.EDAListCategoriesUsecase;
 import ch.zhaw.ssdd.cleanboot.application.port.in.EDAListCategoryEntriesUsecase;
 import ch.zhaw.ssdd.cleanboot.domain.model.Category;
 import ch.zhaw.ssdd.cleanboot.domain.model.InternalPartNumber;
@@ -27,7 +27,7 @@ public class KiCadControllerREST {
 
     private final EDAAccessPartDetailsUseCase accessPartDetailsUseCase;
     private final EDAListCategoryEntriesUsecase listCetegoryEntriesUsecase;
-    private final EDAListCategoriesUseCase listCategoriesUsecase;
+    private final EDAListCategoriesUsecase listCategoriesUsecase;
 
     @GetMapping("/")
     public KicadEndpoint get() {

@@ -8,7 +8,7 @@ import ch.zhaw.ssdd.bookstack.application.port.out.BookPersistence;
 import ch.zhaw.ssdd.bookstack.domain.model.Book;
 
 @Service
-public final class RegisterBookService implements RegisterBookUseCase {
+public class RegisterBookService implements RegisterBookUseCase {
 
     private final BookPersistence bookPersistence;
 

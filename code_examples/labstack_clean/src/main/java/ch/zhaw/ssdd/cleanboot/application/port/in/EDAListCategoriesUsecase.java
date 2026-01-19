@@ -4,6 +4,6 @@ import java.util.List;
 
 import ch.zhaw.ssdd.cleanboot.domain.model.Category;
 
-public interface EDAListCategoriesUseCase {
+public interface EDAListCategoriesUsecase {
     List<Category> invokeEDAListCategories();
 }
