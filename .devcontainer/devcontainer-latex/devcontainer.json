@@ -1,6 +1,6 @@
 {
   "image": "mcr.microsoft.com/devcontainers/base:bookworm",
-  "name": "latex-devcontainer",
+  "name": "cleanboot-latex-devcontainer",
   "workspaceMount": "source=${localWorkspaceFolder},target=/home/devcontainer/workspace,type=bind,consistency=cached",
   "workspaceFolder": "/home/devcontainer/workspace",
   "remoteUser": "devcontainer",
@@ -50,14 +50,10 @@
         "latex-workshop.latex.tools": [
           {
             "name": "pdftex",
-            "command": "latexmk",
+            "command": "bash",
             "args": [
-              "--shell-escape",
-              "-synctex=1",
-              "-interaction=nonstopmode",
-              "-file-line-error",
-              "-pdftex",
-              "%DOC%"
+              "-lc",
+              "latexmk --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -pdf -halt-on-error -aux-directory=%DIR%/.out -outdir=%DIR%/.out -out2dir=%DIR%/.out %DOC% && cp -f \"%DIR%/.out/%DOCFILE%.pdf\" \"%DIR%/%DOCFILE%.pdf\""
             ]
           },
           {
@@ -69,14 +65,10 @@
           },
           {
             "name": "latexmk",
-            "command": "latexmk",
+            "command": "bash",
             "args": [
-              "-synctex=1",
-              "-interaction=nonstopmode",
-              "-file-line-error",
-              "-pdf",
-              "-outdir=%OUTDIR%",
-              "%DOC%"
+              "-lc",
+              "latexmk --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -pdf -halt-on-error -aux-directory=%DIR%/.out -outdir=%DIR%/.out -out2dir=%DIR%/.out %DOC% && cp -f \"%DIR%/.out/%DOCFILE%.pdf\" \"%DIR%/%DOCFILE%.pdf\""
             ]
           }
         ],
@@ -97,7 +89,9 @@
         ],
         // endregion
         // region syntex
-        "latex-workshop.synctex.afterBuild.enabled": true
+        "latex-workshop.synctex.afterBuild.enabled": true,
+        "latex-workshop.latex.outDir": "%DIR%/.out",
+        "latex-workshop.view.pdf.viewer": "tab"
         // endregion
       }
     }
@@ -115,7 +109,7 @@
       "userGid": "1001"
     },
     "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
-      "packages": "curl,nano,make,gcc,g++,gdb,automake,build-essential,direnv",
+      "packages": "curl,nano,make,gcc,g++,gdb,automake,build-essential,direnv,ghostscript,inkscape",
       "upgradePackages": false
     },
     "ghcr.io/devcontainers/features/python:1": {
@@ -125,8 +119,7 @@
     },
     "ghcr.io/prulloac/devcontainer-features/latex:1": {
       "scheme": "scheme-full", // schme-basic, scheme-medium, scheme-full
-      "mirror": "https://mirror.ctan.org/systems/texlive/tlnet/",
-      "packages": "latexmk,biber,chktex,latexindent,pgfplots,minted,biblatex" //,upquote,setspace,lineno,caption,babel-german,chngcntr,svg,transparent,csquotes,enumitem,tcolorbox,tikzfill,pdfcol,listings,listingsutf8,dirtree,draftwatermark"
+      "mirror": "https://mirror.ctan.org/systems/texlive/tlnet/"
     }
   },
   "hostRequirements": {
