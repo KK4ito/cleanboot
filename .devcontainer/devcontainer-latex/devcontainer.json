@@ -32,43 +32,25 @@
         "latex-workshop.latex.clean.subfolder.enabled": true,
         "latex-workshop.latex.recipes": [
           {
-            "name": "pdftex -> biber -> pdftex* 2",
+            "name": "Clean Build",
             "tools": [
-              "pdftex",
-              "biber",
-              "pdftex",
-              "pdftex"
+              "clean-build"
             ]
           },
           {
-            "name": "latexmk",
+            "name": "Build Cleanboot (latexmk)",
             "tools": [
-              "latexmk"
+              "latexmk-cleanboot"
             ]
           }
         ],
         "latex-workshop.latex.tools": [
           {
-            "name": "pdftex",
+            "name": "clean-build",
             "command": "bash",
             "args": [
               "-lc",
-              "latexmk --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -pdf -halt-on-error -aux-directory=%DIR%/.out -outdir=%DIR%/.out -out2dir=%DIR%/.out %DOC% && cp -f \"%DIR%/.out/%DOCFILE%.pdf\" \"%DIR%/%DOCFILE%.pdf\""
-            ]
-          },
-          {
-            "name": "biber",
-            "command": "biber",
-            "args": [
-              "%DOCFILE%"
-            ]
-          },
-          {
-            "name": "latexmk",
-            "command": "bash",
-            "args": [
-              "-lc",
-              "latexmk --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -pdf -halt-on-error -aux-directory=%DIR%/.out -outdir=%DIR%/.out -out2dir=%DIR%/.out %DOC% && cp -f \"%DIR%/.out/%DOCFILE%.pdf\" \"%DIR%/%DOCFILE%.pdf\""
+              "rm -rf %DIR%/.out && rm -f *.bbl *.bcf *.blg *.run.xml quit.tex script.pdf && latexmk --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -pdf -halt-on-error -aux-directory=%DIR%/.out -outdir=%DIR%/.out -out2dir=%DIR%/.out %DOC% && cp -f \"%DIR%/.out/%DOCFILE%.pdf\" \"%DIR%/%DOCFILE%.pdf\""
             ]
           }
         ],
